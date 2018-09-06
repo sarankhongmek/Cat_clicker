@@ -31,7 +31,7 @@ body {
 }
 
 
-img {
+.display-pic  {
   max-width: 100%;
   border-radius: 5px 5px 5px 5px;
 }
@@ -46,4 +46,45 @@ img {
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
+}
+
+
+.card-holder {
+  margin: 20px auto 0 auto;
+  flex-wrap: wrap;
+  width: 500px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 60px 60px 0 60px;
+  text-align:center;
+}
+
+
+h3{
+  position: relative;
+  bottom: 50px;
+}
+
+.thumbnail {
+  position: relative;
+  bottom: 50px;
+  max-width: 40%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  
+
+}
+
+.pick img {
+  margin:20px;
+}
+
+
+.thumbnail:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }

@@ -88,3 +88,23 @@ h3{
 .thumbnail:hover {
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
+
+
+.form-box {
+  position:absolute;
+  background-color: #ece3dbbf;
+  width: 300px;
+  padding: 50px;
+  left: 250px;
+  bottom:180px;
+  border-radius: 10px;
+  visibility: hidden;
+}
+
+.admin-bttn{
+  position: absolute;
+  bottom:180px;
+  left: 660px;
+}
+

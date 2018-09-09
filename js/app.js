@@ -1,7 +1,7 @@
 //Cat object
 var model = {
 
-	ativeCat:null,
+	activeCat:null,
 	cats: 
 	[{
 		name: 'Ruby!',
@@ -70,13 +70,14 @@ var catlist = {
 var octopus = {
 	//initiate model.activeCat
 	init: function() {
-		model.ativeCat = model.cats[0];
+		model.activeCat = model.cats[0];
 		catlist.init();
 		displayCat.init();
+		admin.init();
 	},
 	//get the current cat that is in activeCat
 	getActiveCat: function(){
-		return model.ativeCat;
+		return model.activeCat;
 	},
 	//get cat lists
 	getCats: function() {
@@ -85,17 +86,84 @@ var octopus = {
 	//set new cat
 	setActiveCat: function(cat) {
 		console.log('here')
-		model.ativeCat = model.cats[cat];
+		model.activeCat = model.cats[cat];
 		displayCat.render();
 	},
 	//increment clicks
 	updateClicks: function() {
-		model.ativeCat.clicks++;
+		model.activeCat.clicks++;
 		displayCat.render();
 	},
 
+	updateModel: function () {
+		if(admin.nameInput.value !== ''){
+			model.activeCat.name = admin.nameInput.value;
+		}
+		if (admin.urlInput.value !== ''){
+			model.activeCat.picture = admin.urlInput.value;
+		}
+		if (admin.clicksInput.value !== ''){
+			model.activeCat.clicks = admin.clicksInput.value;
+		}
+		displayCat.render();
+
+	},
+
+	updateInfo: function () {
+		admin.render();
+	}
+
 
 };
+
+
+
+//admin
+
+var admin = {
+
+	init: function () {
+		//assigning Elems to objs in this methods
+		this.savebtn = document.querySelector('.submit');
+		this.cancelbtn = document.querySelector('.cancelbtn');
+		this.adminbtn = document.querySelector('.admin-bttn');
+
+		//adding eventListener to Buttons show form
+		this.adminbtn.addEventListener('click',function (){
+				document.querySelector('.form-box').style.visibility = 'visible';
+		});
+		//adding eventListener to Buttons hide form
+		this.cancelbtn.addEventListener('click', function(){
+				document.querySelector('.form-box').style.visibility = 'hidden';
+				admin.render();
+		});
+
+		this.savebtn = document.querySelector('.submit');
+		this.savebtn.addEventListener('click', function () {
+				octopus.updateModel();
+		});
+
+		//adding eventListener to Button submit data to array
+
+		this.render();
+
+
+	},
+
+	render: function () {
+		const currentCat = octopus.getActiveCat();
+
+		this.nameInput = document.getElementById('name');
+		this.urlInput = document.getElementById('url');
+		this.clicksInput = document.getElementById('clicks');
+
+		this.nameInput.placeholder = currentCat.name;
+		this.urlInput.placeholder = currentCat.picture;
+		this.clicksInput.placeholder = currentCat.clicks;
+	}
+
+
+}
 
 
 octopus.init();
